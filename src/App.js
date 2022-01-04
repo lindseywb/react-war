@@ -1,11 +1,14 @@
 import './App.css';
+import Header from './components/Header';
+import Score from './components/Score';
+import Deck from './components/Deck';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>React War</h1>
-      </header>
+      <Header />
+      <Deck />
+      <Score />
     </div>
   );
 }
