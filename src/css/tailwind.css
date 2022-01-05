@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.App-header {
+    @apply bg-blue-100;
+}
+.App-header p {
+    @apply text-red-400;
+}
