@@ -15,7 +15,7 @@ function App() {
 		player1: 0,
 		player2: 0
 	});
-	const [scoreAmt, setScoreAmt] = useState(1)
+	const [scoreAmt, setScoreAmt] = useState(1);
 
 	function newCardValues() {
 		
@@ -28,10 +28,9 @@ function App() {
 
 	const firstUpdate = useRef(true);
 	useEffect(() => {
-	
+
 		if(cardValues.card1 === cardValues.card2) {
 			setStartWar(true);
-			setScoreAmt( startWar ? 2 : 1);
 		} else {
 			if(cardValues.card1 > cardValues.card2) {
 				setScore( prevScore => ({
@@ -45,16 +44,14 @@ function App() {
 				}))
 			}
 			setStartWar(false);
-		} 
-
-		console.log(scoreAmt)
+		}
 
 		// on first render, start war should be false
 		if (firstUpdate.current) {
 			firstUpdate.current = false;
 			setStartWar(false);
 		}
-	}, [cardValues])
+	}, [cardValues, scoreAmt, startWar]);
 
 	function dealCards() {
 		setCardValues(newCardValues())
