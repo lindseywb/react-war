@@ -9,7 +9,7 @@ export default function Header() {
                 <li>The player with the higher card wins the hand and receives 1 point.</li>
                 <li>If both players have the same number card, another card will be dealt to each player.</li>
                 <li>The player with the higher card wins the hand and receives 2 points.</li>
-                <li>The first player to 20 points wins.</li>
+                <li>The first player to 25 points wins.</li>
             </ol>
         </header>
     )

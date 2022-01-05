@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Score from './components/Score';
 import Deck from './components/Deck';
+import GameWon from "./components/GameWon";
 
 function App() {
 
@@ -18,7 +19,6 @@ function App() {
 	const [gameWon, setGameWon] = useState(false)
 
 	function newCardValues() {
-		
 		const newValues = {
 			card1: Math.ceil( Math.random() * 12 ),
 			card2: Math.ceil( Math.random() * 12 )
@@ -30,7 +30,7 @@ function App() {
 	useEffect(() => {
 
 		if( ! gameWon ) {
-			if(cardValues.card1 === cardValues.card2) {
+			if(cardValues.card1 === cardValues.card2 ) {
 				setStartWar(true);
 			} else {
 				if(cardValues.card1 > cardValues.card2) {
@@ -46,7 +46,7 @@ function App() {
 				}
 				setStartWar(false);
 			}
-		}
+		} 
 
 		// on first render, start war should be false
 		if (firstUpdate.current) {
@@ -56,17 +56,28 @@ function App() {
 	}, [cardValues, gameWon, startWar]);
 
 	useEffect(() => {
-		setGameWon( prevState => score.player2 >= 25 || score.player1 >= 25 && ! prevState);
+		setGameWon( prevState => {
+			return score.player2 >= 25 || score.player1 >= 25 ? true : false;
+		});
 	}, [score])
 
 	function dealCards() {
 		setCardValues(newCardValues());
 	}
 
+	function resetGame() {
+		newCardValues();
+		setScore({
+			player1: 0,
+			player2: 0
+		})
+	}
+
 	return (
 		<div className="App">
 			<Header />
 			<Deck values={cardValues} dealCards={dealCards} war={startWar} gameWon={gameWon} />
+			{ gameWon && <GameWon onClick={resetGame} winner={1} />}
 			<Score score={score} />
 		</div>
 	);
