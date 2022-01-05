@@ -15,7 +15,7 @@ function App() {
 		player1: 0,
 		player2: 0
 	});
-	const [scoreAmt, setScoreAmt] = useState(1);
+	const [gameWon, setGameWon] = useState(false)
 
 	function newCardValues() {
 		
@@ -29,21 +29,23 @@ function App() {
 	const firstUpdate = useRef(true);
 	useEffect(() => {
 
-		if(cardValues.card1 === cardValues.card2) {
-			setStartWar(true);
-		} else {
-			if(cardValues.card1 > cardValues.card2) {
-				setScore( prevScore => ({
-					...prevScore,
-					player1: prevScore.player1 + scoreAmt
-				}))
+		if( ! gameWon ) {
+			if(cardValues.card1 === cardValues.card2) {
+				setStartWar(true);
 			} else {
-				setScore( prevScore => ({
-					...prevScore,
-					player2: prevScore.player2 + scoreAmt
-				}))
+				if(cardValues.card1 > cardValues.card2) {
+					setScore( prevScore => ({
+						...prevScore,
+						player1: prevScore.player1 + 1
+					}))
+				} else {
+					setScore( prevScore => ({
+						...prevScore,
+						player2: prevScore.player2 + 1
+					}))
+				}
+				setStartWar(false);
 			}
-			setStartWar(false);
 		}
 
 		// on first render, start war should be false
@@ -51,16 +53,20 @@ function App() {
 			firstUpdate.current = false;
 			setStartWar(false);
 		}
-	}, [cardValues, scoreAmt, startWar]);
+	}, [cardValues, gameWon, startWar]);
+
+	useEffect(() => {
+		setGameWon( prevState => score.player2 >= 25 || score.player1 >= 25 && ! prevState);
+	}, [score])
 
 	function dealCards() {
-		setCardValues(newCardValues())
+		setCardValues(newCardValues());
 	}
 
 	return (
 		<div className="App">
 			<Header />
-			<Deck values={cardValues} dealCards={dealCards} war={startWar} />
+			<Deck values={cardValues} dealCards={dealCards} war={startWar} gameWon={gameWon} />
 			<Score score={score} />
 		</div>
 	);

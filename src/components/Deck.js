@@ -12,7 +12,14 @@ export default function Deck(params) {
 
             {params.war && <p>its war time</p>}
 
-            <button onClick={params.dealCards}>{params.war ? 'Go to war!' : 'Deal'}</button>
+            { ! params.gameWon && 
+                <button onClick={params.dealCards}>{params.war ? 'Go to war!' : 'Deal'}</button>
+            }
+
+            {
+                params.gameWon && 
+                <h4>someone won the game!</h4>
+            }
         </div>
     )
 };
