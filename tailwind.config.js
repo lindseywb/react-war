@@ -1,4 +1,7 @@
-module.exports = {// or 'class'
+module.exports = {
+    content: [
+        "./src/**/*.{js,jsx,ts,tsx}",
+    ],
     theme: {
         screens: {
             sm: '640px',
@@ -137,6 +140,17 @@ module.exports = {// or 'class'
             '4xl': '2.25rem',
             '5xl': '3rem',
             '6xl': '4rem',
+        },
+        fontWeight: {
+            hairline: '100',
+            thin: '200',
+            light: '300',
+            normal: '400',
+            medium: '500',
+            semibold: '600',
+            bold: '700',
+            extrabold: '800',
+            black: '900',
         },
     },
     variants: {},

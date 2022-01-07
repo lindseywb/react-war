@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import './App.css';
 import Header from './components/Header';
 import Score from './components/Score';
 import Deck from './components/Deck';

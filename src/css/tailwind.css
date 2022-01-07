@@ -3,8 +3,52 @@
 @tailwind utilities;
 
 .App-header {
-    @apply bg-blue-100;
+    @apply bg-gray-800 py-9;
+    padding-left: 5%;
+    padding-right: 5%;
 }
-.App-header p {
-    @apply text-red-400;
+.App-header h1 {
+    @apply text-5xl font-bold text-gray-100;
+}
+.App-header h2 {
+    @apply text-red-500 font-bold text-3xl mb-4;
+}
+.App-header h3 {
+    @apply text-gray-400 font-bold text-2xl mb-3;
+}
+.App-header ol {
+    @apply list-decimal list-inside pl-8;
+}
+.App-header li {
+    @apply text-gray-200 pb-2;
+}
+
+.deck {
+    @apply py-7;
+}
+.cards {
+    @apply max-w-2xl m-auto grid grid-cols-2 gap-10;
+}
+.card {
+    @apply col-span-1 p-20 border-2 text-center rounded-xl;
+}
+.card h3 {
+    @apply font-bold;
+}
+.card p {
+    @apply leading-none;
+}
+.card1 {
+    @apply border-blue-200 bg-blue-100 text-blue-800;
+}
+.card2 {
+    @apply border-green-200 bg-green-100 text-green-800;
+}
+.card-number {
+    @apply font-bold;
+    font-size: 140px;
+}
+
+button {
+    @apply bg-gray-700 font-bold text-white py-2 px-3 m-auto;
 }

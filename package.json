@@ -17,9 +17,12 @@
   "scripts": {
     "build:tailwind": "tailwind build src/css/tailwind.css -o src/css/tailwind.output.css",
     "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/css/tailwind.output.css -c 'npm run build:tailwind'",
+
     "start": "npm-run-all build:tailwind --parallel watch:tailwind start:react",
     "start:react": "react-scripts start",
+
     "prebuild": "run-s build:tailwind",
+
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
