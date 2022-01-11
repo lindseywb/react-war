@@ -15,7 +15,10 @@ function App() {
 		player1: 0,
 		player2: 0
 	});
-	const [gameWon, setGameWon] = useState(false)
+	const [gameWon, setGameWon] = useState({
+		isWon: false,
+		whoWon: ''
+	})
 
 	function newCardValues() {
 		const newValues = {
@@ -28,7 +31,7 @@ function App() {
 	const firstUpdate = useRef(true);
 	useEffect(() => {
 
-		if( ! gameWon ) {
+		if( ! gameWon.isWon ) {
 			if(cardValues.card1 === cardValues.card2 ) {
 				setStartWar(true);
 			} else {
@@ -55,9 +58,21 @@ function App() {
 	}, [cardValues, gameWon, startWar]);
 
 	useEffect(() => {
-		setGameWon( prevState => {
-			return score.player2 >= 25 || score.player1 >= 25 ? true : false;
-		});
+
+		if( score.player2 >= 25 || score.player1 >= 25 ) {
+			const winner = score.player1 >= 25 ? 'Computer' : 'You';
+
+			setGameWon( () => {
+				return {
+					isWon: true,
+					whoWon: winner
+				}
+			});
+		}
+		
+		// setGameWon( prevState => {
+		// 	return score.player2 >= 25 || score.player1 >= 25 ? true : false;
+		// });
 	}, [score])
 
 	function dealCards() {
@@ -69,6 +84,10 @@ function App() {
 		setScore({
 			player1: 0,
 			player2: 0
+		});
+		setGameWon({
+			isWon: false,
+			whoWon: ''
 		})
 	}
 
@@ -76,10 +95,10 @@ function App() {
 		<div className="App">
 			<Header />
 			<div className="game-board">
-				<Deck values={cardValues} dealCards={dealCards} war={startWar} gameWon={gameWon} />
+				<Deck values={cardValues} dealCards={dealCards} war={startWar} gameWon={gameWon.isWon} />
 				<div className='game-controls'>
 					<Score score={score} />
-					{ gameWon && <GameWon onClick={resetGame} winner={1} />}
+					{ gameWon.isWon && <GameWon onClick={resetGame} winner={gameWon.whoWon} />}
 				</div>
 			</div>
 		</div>
