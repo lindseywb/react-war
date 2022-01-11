@@ -75,9 +75,13 @@ function App() {
 	return (
 		<div className="App">
 			<Header />
-			<Deck values={cardValues} dealCards={dealCards} war={startWar} gameWon={gameWon} />
-			{ gameWon && <GameWon onClick={resetGame} winner={1} />}
-			<Score score={score} />
+			<div className="game-board">
+				<Deck values={cardValues} dealCards={dealCards} war={startWar} gameWon={gameWon} />
+				<div className='game-controls'>
+					<Score score={score} />
+					{ gameWon && <GameWon onClick={resetGame} winner={1} />}
+				</div>
+			</div>
 		</div>
 	);
 }
