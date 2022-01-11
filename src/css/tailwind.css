@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.App-header {
+    @apply bg-gray-800 py-9;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.App-header h1 {
+    @apply text-5xl font-bold text-gray-100;
+}
+.App-header h2 {
+    @apply text-red-500 font-bold text-3xl mb-4;
+}
+.App-header h3 {
+    @apply text-gray-400 font-bold text-2xl mb-3;
+}
+.App-header ol {
+    @apply list-decimal list-inside pl-8;
+}
+.App-header li {
+    @apply text-gray-200 pb-2;
+}
+
+.game-board {
+    @apply grid grid-cols-12 gap-3;
+    padding-left: 5%;
+    padding-right: 5%;
+    max-width: 1200px;
+}
+.deck {
+    @apply py-7 col-span-8;
+}
+.cards {
+    @apply max-w-2xl mx-auto grid grid-cols-2 gap-10 mb-5;
+}
+.card {
+    @apply col-span-1 p-20 border-2 text-center rounded-xl;
+}
+.card h3 {
+    @apply font-bold;
+}
+.card p {
+    @apply leading-none;
+}
+.card1 {
+    @apply border-blue-200 bg-blue-100 text-blue-800;
+}
+.card2 {
+    @apply border-teal-200 bg-teal-100 text-teal-800;
+}
+.card-number {
+    @apply font-bold;
+    font-size: 140px;
+}
+
+.game-controls {
+    @apply col-span-4 p-2 mt-5;
+}
+.score-card h4 {
+    @apply font-bold mb-3;
+}
+.scores {
+    @apply  grid grid-cols-2 gap-2;
+}
+.score {
+    @apply col-span-1 rounded border-gray-400 bg-gray-100 border p-3 text-center;
+}
+.score p {
+    @apply font-bold;
+}
+
+.score h5 {
+    @apply text-2xl;
+}
+
+button {
+    @apply bg-green-700 font-bold text-white py-3 px-4 m-auto rounded;
+}
+button:active {
+    box-shadow: inset 0 2px 4px 0 rgba(22, 22, 22, 0.5);
+}
+
+.war-time {
+    @apply inline-block ml-4 font-bold text-red-700;
+}
+
+.game-won {
+    @apply mt-6;
+}
+.game-won h4 {
+    @apply font-bold text-3xl leading-tight mb-5;
+}

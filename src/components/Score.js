@@ -1,13 +1,16 @@
 export default function Score(params) {
     return (
         <div className="score-card">
-            <div className="score score-player-1">
-                <p>Player 1:</p>
-                {params.score.player1}
-            </div>
-            <div className="score score-player-2">
-                <p>Player 2:</p>
-                {params.score.player2}
+            <h4>Scores:</h4>
+            <div className="scores">
+                <div className="score score-player-1">
+                    <p>Computer:</p>
+                    <h5>{params.score.player1}</h5>
+                </div>
+                <div className="score score-player-2">
+                    <p>You:</p>
+                    <h5>{params.score.player2}</h5>
+                </div>
             </div>
         </div>
     )

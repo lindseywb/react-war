@@ -2,8 +2,8 @@ export default function Header() {
     return (
         <header className="App-header">
             <h1>React War</h1>
-            <p>Play war against the computer.</p>
-            <p>How to play:</p>
+            <h2>Play war against the computer.</h2>
+            <h3>How to play:</h3>
             <ol>
                 <li>Click "Deal Cards"</li>
                 <li>The player with the higher card wins the hand and receives 1 point.</li>

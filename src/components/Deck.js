@@ -9,12 +9,13 @@ export default function Deck(params) {
                 <CardPlayer2 value={params.values.card2} />
             </div>
 
-            {params.war && <p>its war time</p>}
+            <div className="controls">
+                { ! params.gameWon && 
+                    <button onClick={params.dealCards}>{params.war ? 'Go to war!' : 'Deal'}</button>
+                }
 
-            { ! params.gameWon && 
-                <button onClick={params.dealCards}>{params.war ? 'Go to war!' : 'Deal'}</button>
-            }        
-
+                {params.war && <p className="war-time">It's war time!</p>}   
+            </div>
         </div>
     )
 };
